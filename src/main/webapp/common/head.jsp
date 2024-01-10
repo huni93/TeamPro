@@ -56,7 +56,7 @@
                                 <ul class="sub-menu">
                                     
                                     <li><a href="../member/memberinfo">회원정보</li>
-                                    <li><a href="${pageContext.request.contextPath}/board/myproducts?boardid=4">찜한상품</a></li>
+                                    <li><a href="${pageContext.request.contextPath}/jumun/jumunList">찜한상품</a></li>
                                     <li><a href="${pageContext.request.contextPath}/board/myproducts?boardid=5">판매등록상품</a></li>
                                      <li><a href="${pageContext.request.contextPath}/board/myproducts?boardid=6">판매완료상품</a></li>
                                 </ul>

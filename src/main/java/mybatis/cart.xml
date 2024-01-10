@@ -18,7 +18,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     JOIN 
         auction a ON ap.itemid = a.pnum
     WHERE 
-        m.id = #{userId};
+        m.id = #{userId}
+    ORDER BY 
+    a.pnum DESC
 </select>
 
 

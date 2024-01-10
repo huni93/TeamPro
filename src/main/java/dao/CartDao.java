@@ -82,25 +82,6 @@ public class CartDao {
 
 	}
 
-	public int insertjumun(Auction jumun) throws UnsupportedEncodingException, SQLException {
-
-		Connection conn = getConnection();
-
-		PreparedStatement pstmt = conn.prepareStatement("insert into auction values (?, ?, ?, ?, ?, ?)");
-		// mapping
-		pstmt.setInt(1, jumun.getPnum());
-		pstmt.setString(2, jumun.getPicture());
-		pstmt.setString(3, jumun.getPname());
-		pstmt.setString(4, jumun.getPrice());
-		pstmt.setInt(5, jumun.getReadcnt());
-		pstmt.setDate(6, new java.sql.Date(jumun.getRegdate().getTime()));
-
-		// 4)excute
-		int num = pstmt.executeUpdate();
-		return num;
-
-	}
-
 
 	
 

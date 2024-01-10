@@ -44,7 +44,7 @@ public class JumunController extends MskimRequestMapping {
 	@RequestMapping("jumunList")
 	public String jumunList(HttpServletRequest req, HttpServletResponse res) throws Exception {
         
-        CartDao cd = new CartDao();
+		CartMybatisDao cd = new CartMybatisDao();
         HttpSession session = req.getSession();
         String id = (String) session.getAttribute("id");
 		List<Cart>  li = cd.jumunList(id);
