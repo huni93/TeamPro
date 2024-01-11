@@ -15,6 +15,7 @@ import com.oreilly.servlet.MultipartRequest;
 import dao.BoardMybatisDao;
 
 import dao.MemberMybatisDao;
+import kic.mskim.Login;
 import kic.mskim.MskimRequestMapping;
 import kic.mskim.RequestMapping;
 
@@ -26,7 +27,7 @@ import model.Auction;
 @WebServlet("/board/*")
 public class BoardController extends MskimRequestMapping {
 	BoardMybatisDao bd = new BoardMybatisDao();
-
+	MemberMybatisDao md = new MemberMybatisDao();
 	HttpSession session;
 
 	@Override
@@ -35,12 +36,16 @@ public class BoardController extends MskimRequestMapping {
 		this.session = request.getSession();
 		super.service(request, resp);
 	}
-
-	@RequestMapping("boardForm")
-	public String boardForm(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO Auto-generated method stub
-		return "/WEB-INF/view/board/boardForm.jsp";
-	}
+	@Login(key = "id")
+	   @RequestMapping("boardForm")
+	   public String boardForm(HttpServletRequest req, HttpServletResponse res) throws Exception {
+	      // TODO Auto-generated method stub
+	      String login = (String) session.getAttribute("id");
+	      Amem mem = md.oneMember(login);
+	      req.setAttribute("amem", mem);
+	   
+	      return "/WEB-INF/view/board/boardForm.jsp";
+	   }
 
 	@RequestMapping("boardPro")
 	public String boardPro(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -57,7 +62,7 @@ public class BoardController extends MskimRequestMapping {
 			if (boardid == null)				boardid = "1";
 		board.setBoardid(boardid);
 		
-		
+		board.setUserid(multi.getParameter("userid"));
 		board.setPname(multi.getParameter("pname"));
 		board.setPass(multi.getParameter("pass"));
 		board.setSubject(multi.getParameter("subject"));

@@ -5,8 +5,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace = "board">
 
 <insert id="insertBoard" parameterType="Auction">
-    INSERT INTO auction (PNUM, PNAME, PRICE, PICTURE, SUBJECT, CONTENT, PASS, FILE1, BOARDID, REGDATE, READCNT)
-    VALUES (boardseq.nextval, #{pname}, NULL, NULL, #{subject}, #{content}, #{pass}, #{file1}, #{boardid}, sysdate, 0)
+    INSERT INTO auction (PNUM, PNAME, PRICE, PICTURE, SUBJECT, CONTENT, PASS, FILE1, BOARDID, REGDATE, READCNT, USERID)
+    VALUES (boardseq.nextval, #{pname}, NULL, NULL, #{subject}, #{content}, #{pass}, #{file1}, #{boardid}, sysdate, 0, #{userid})
 </insert>
 
 <select id="boardList" parameterType="map" resultType="Auction">

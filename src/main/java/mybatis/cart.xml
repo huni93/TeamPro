@@ -23,7 +23,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     a.pnum DESC
 </select>
 
-
+   <select id="myList" parameterType="map" resultType="Auction">
+        SELECT
+            b.userid,
+            b.pnum,
+            b.picture,
+            b.pname,
+            b.file1,
+            b.subject,
+            b.price,
+            b.readcnt,
+            TO_CHAR(b.regdate, 'yyyy-MM-dd HH24:mi:ss') AS regdate
+        FROM
+            amem a
+        JOIN
+            auction b ON a.id = b.userid
+        WHERE 
+            a.id = #{loggedInUserId}
+        ORDER BY 
+            a.pnum DESC
+    </select>
 
 
 </mapper>

@@ -55,7 +55,19 @@ public class JumunController extends MskimRequestMapping {
 		return "/WEB-INF/view/jumun/jumunList.jsp";
 	}
 
+	@RequestMapping("myList")
+	public String myList(HttpServletRequest req, HttpServletResponse res) throws Exception {
+        
+		CartMybatisDao cd = new CartMybatisDao();
+        HttpSession session = req.getSession();
+        String id = (String) session.getAttribute("id");
+		List<Cart>  li = cd.myList(id);
+
+		System.out.println(li);
+		req.setAttribute("li", li);
 		
+		return "/WEB-INF/view/jumun/myList.jsp";
+	}	
 }
 
 

@@ -13,23 +13,22 @@ public class CartMybatisDao {
 	
 	
 	public int addToAproducts(Cart cart) throws SQLException {
-	  
+	  	
 		int num = sqlSession.insert(ns+"addToAproducts", cart);
 		sqlSession.commit();
 		return num;
 	}
 
 	public List<Cart> jumunList(String userid) throws SQLException {
-
 		List<Cart> li = sqlSession.selectList(ns+"jumunList", userid);
 	return li;
 
 	}
+	public List<Cart> myList(String userid) throws SQLException {
+		List<Cart> li = sqlSession.selectList(ns+"myList", userid);
+	return li;
 
+	}
 	
-
-	
-
-
 	}
 
