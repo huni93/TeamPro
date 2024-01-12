@@ -16,7 +16,6 @@ select * from (
 		order by pnum desc) a)
 		where rnum between #{start} and #{end}
 </select>
-
 <select id="boardCount"  resultType="int" parameterType="string">
 select nvl(count(*),0)   from auction  where boardid = #{boardid}
 </select>
@@ -41,6 +40,13 @@ delete from auction where pnum = #{pnum}
 select *   from boardcomment  where num = #{num} order by regdate desc
 </select>
 
+<select id="mainList" parameterType="map" resultType="Auction">
+select * from (
+		select rownum rnum,a.*  from (
+		select * from auction
+		order by pnum desc) a)
+		where rnum between 0 and 10
+</select>
 
 
 </mapper>

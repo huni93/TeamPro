@@ -119,7 +119,7 @@ li {
 <body>
 
 	<div class="container">
-		<h5 class="text-center">[${boardCount}]개의 상품이 있습니다</h5>
+		<h5 class="text-center">[${li.size()}]개의 상품이 있습니다</h5>
 
 		<c:forEach var="b" items="${li}">
 			<div class="product-item">

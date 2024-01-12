@@ -36,10 +36,10 @@ public class MemberController extends MskimRequestMapping {
 	   public String index(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		      // TODO Auto-generated method stub
 	
-			
+		List<Auction> li = bd.mainList();	
 		
 		
-		
+		req.setAttribute("li", li);
 		
 	    return "/WEB-INF/view/member/index.jsp";
 		}

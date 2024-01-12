@@ -59,7 +59,7 @@ public class BoardMybatisDao {
 		map.put("end", pageInt * limit);
 		return sqlSession.selectList(ns + "boardList", map);
 	}
-
+	
 	public int boardCount(String boardid) throws UnsupportedEncodingException, SQLException {
 		return sqlSession.selectOne(ns + "boardCount", boardid);
 	}
@@ -102,5 +102,10 @@ public class BoardMybatisDao {
 		return sqlSession.selectList(ns + "commentList", num);
 	}
 	
-	
+	public List<Auction> mainList()
+			throws UnsupportedEncodingException, SQLException {
+
+		sqlSession.commit();
+		return sqlSession.selectList(ns + "mainList");
+	}
 }

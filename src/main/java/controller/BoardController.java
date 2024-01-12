@@ -177,7 +177,7 @@ public class BoardController extends MskimRequestMapping {
 		return "/WEB-INF/view/board/products.jsp";
 
 	}
-
+	
 	@RequestMapping("boardInfo")
 	public String boardInfo(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		// TODO Auto-generated method stub
