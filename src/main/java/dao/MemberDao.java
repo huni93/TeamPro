@@ -6,12 +6,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import model.Auction;
 import model.KicMember;
 
 public class MemberDao {
@@ -119,33 +116,5 @@ public int insertMember(KicMember kicmem) throws UnsupportedEncodingException, S
                  return num;
                           
            }
-          public List<Auction> jumunList() throws UnsupportedEncodingException, SQLException {
-      		Connection conn = getConnection();
-      		String sql = "select * from auction";
-      		PreparedStatement pstmt = conn.prepareStatement(sql);
-      		List<Auction>  li = new ArrayList<>();
-      		
-      		
-      		// 4)excute
-      		ResultSet rs = pstmt.executeQuery();
-      		while(rs.next()) {
-      			Auction j = new Auction();
-      			j.setPnum(rs.getInt("pnum"));
-      	        j.setPname(rs.getString("pname"));
-      	        j.setPrice(rs.getString("price"));
-      	        j.setPicture(rs.getString("picture"));
-      	        j.setSubject(rs.getString("subject"));
-      	        j.setContent(rs.getString("content"));
-      	        j.setPass(rs.getString("pass"));
-      	        j.setBoardid(rs.getString("boardid"));
-      	        j.setReadcnt(rs.getInt("readcnt"));
-      	        j.setFile1(rs.getString("file1"));
-      	        j.setRegdate(rs.getDate("regdate"));
-      			li.add(j);
-      		}
-      		
-      		return li;
-      		
-      	}
 
 }// class end

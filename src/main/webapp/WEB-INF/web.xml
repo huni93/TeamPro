@@ -29,7 +29,9 @@
       <url-pattern>/WEB-INF/view/member/*</url-pattern>
       <url-pattern>/WEB-INF/view/board/*</url-pattern>
       <url-pattern>/WEB-INF/view/jumun/*</url-pattern>
+      
     <include-prelude>/common/head.jsp</include-prelude>
+    
       <include-coda>/common/footer.jsp</include-coda>
     </jsp-property-group>
   </jsp-config>

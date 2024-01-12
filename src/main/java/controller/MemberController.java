@@ -27,7 +27,7 @@ import model.Auction;
 @WebServlet("/member/*")
 public class MemberController extends MskimRequestMapping {
 	 
-	
+	BoardMybatisDao bd = new BoardMybatisDao();
 	MemberMybatisDao md = new MemberMybatisDao();
 	
 	HttpSession session;
@@ -35,8 +35,12 @@ public class MemberController extends MskimRequestMapping {
 	@RequestMapping("index") //~~/board/index
 	   public String index(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		      // TODO Auto-generated method stub
-		 
-
+	
+			
+		
+		
+		
+		
 	    return "/WEB-INF/view/member/index.jsp";
 		}
 	
@@ -78,7 +82,7 @@ public class MemberController extends MskimRequestMapping {
 		
 		String login = (String) session.getAttribute("id");
 		Amem mem = md.oneMember(login);
-		request.setAttribute("mem", mem);
+		request.setAttribute("amem", mem);
 		return "/WEB-INF/view/member/memberinfo.jsp";
 	}
 	

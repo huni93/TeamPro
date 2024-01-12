@@ -20,7 +20,24 @@ import model.Auction;
 
 public class BoardMybatisDao {
 
-	
+	public Connection getConnection() {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+
+		try {
+			Class.forName("oracle.jdbc.OracleDriver");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "kic", "1111");
+			return conn;
+		} catch (ClassNotFoundException e) {
+
+			e.printStackTrace();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+
+		return null;
+	}
 	
 	SqlSession sqlSession = MybatisConnection.getConnection();
 	private static final String ns = "board.";
@@ -84,4 +101,6 @@ public class BoardMybatisDao {
 
 		return sqlSession.selectList(ns + "commentList", num);
 	}
+	
+	
 }

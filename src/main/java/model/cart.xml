@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </insert>
 
 <select id="jumunList" parameterType="map" resultType="Auction">
-SELECT 
+   SELECT 
         a.pnum, a.picture, a.pname, a.file1, a.subject, a.price, a.readcnt, TO_CHAR(a.regdate, 'yyyy-MM-dd HH24:mi:ss') AS regdate
     FROM 
         amem m
@@ -24,7 +24,7 @@ SELECT
 </select>
 
    <select id="myList" parameterType="map" resultType="Auction">
-      SELECT
+        SELECT
             b.userid,
             b.pnum,
             b.picture,
@@ -41,7 +41,7 @@ SELECT
         WHERE 
             a.id = #{loggedInUserId}
         ORDER BY 
-            b.pnum DESC
+            a.pnum DESC
     </select>
 
 
