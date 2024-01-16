@@ -34,6 +34,11 @@
     
       <include-coda>/common/footer.jsp</include-coda>
     </jsp-property-group>
+ 
+     <jsp-property-group>
+            <url-pattern>/WEB-INF/view/admin/*</url-pattern>
+            </jsp-property-group>
+ 
   </jsp-config>
   
 </web-app>

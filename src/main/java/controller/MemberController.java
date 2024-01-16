@@ -87,30 +87,36 @@ public class MemberController extends MskimRequestMapping {
 	}
 	
 	@RequestMapping("loginPro")
-	public String loginPro(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String id = request.getParameter("id");
-		String pass = request.getParameter("pass");
-		
-		Amem mem = md.oneMember(id);
-		
-		HttpSession session=request.getSession();
+	   public String loginPro(HttpServletRequest request, HttpServletResponse response) throws Exception {
+	      String id = request.getParameter("id");
+	      String pass = request.getParameter("pass");
+	      
+	      Amem mem = md.oneMember(id);
+	      
+	      HttpSession session=request.getSession();
 
-		String msg = "아이디를 확인하세요";
-		String url = "/member/loginForm";
-		if(mem != null) { //id 존재할때
-			if (pass.equals(mem.getPass())) { //login ok
-				session.setAttribute("id", id);
-			msg = mem.getName() + "님이 로그인 하셨습니다.";
-		    url = "/member/index";
-			}else {
-				msg = "비밀번호를 확인하세요";
-			}
-		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("url", url);
-		
-		return "/WEB-INF/view/alert.jsp";
-	}
+	      String msg = "아이디를 확인하세요";
+	      String url = "/member/loginForm";
+	      if(mem != null ) { //id 존재할때
+	         if (pass.equals(mem.getPass())) { //login ok
+	            session.setAttribute("id", id);
+	            if (mem.getAdminchk().equals("1")) {
+	               session.setAttribute("admin", id);
+	            msg = "관리자로 로그인하셧습니다.";
+	            url = "/admin/main";
+	            }else if(mem.getAdminchk().equals("0")){
+	         msg = mem.getName() + "님이 로그인 하셨습니다.";
+	          url = "/member/index";
+	            }} else {
+	            msg = "비밀번호를 확인하세요";
+	         }
+	      }
+	      
+	      request.setAttribute("msg", msg);
+	      request.setAttribute("url", url);
+	      
+	      return "/WEB-INF/view/alert.jsp";
+	   }
 
 	@RequestMapping("memberPro")
 	public String memberPro(HttpServletRequest request, HttpServletResponse response) throws Exception {
